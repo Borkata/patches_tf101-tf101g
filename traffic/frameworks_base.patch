@@ -1,0 +1,54 @@
+diff --git a/core/java/android/provider/Settings.java b/core/java/android/provider/Settings.java
+index 099593b..18da0d9 100644
+--- a/core/java/android/provider/Settings.java
++++ b/core/java/android/provider/Settings.java
+@@ -2836,6 +2836,11 @@ public final class Settings {
+         public static final String STATUS_BAR_CLOCK = "status_bar_clock";
+ 
+         /**
++         * Show network speed in btatus bar
++         */
++        public static final String STATUS_BAR_TRAFFIC = "status_bar_traffic";
++
++        /**
+          * Whether to show the signal text or signal bars.
+          * default: 0
+          * 0: show signal bars
+diff --git a/packages/SystemUI/res/layout/status_bar.xml b/packages/SystemUI/res/layout/status_bar.xml
+index 171ee6d..ab1e8da 100644
+--- a/packages/SystemUI/res/layout/status_bar.xml
++++ b/packages/SystemUI/res/layout/status_bar.xml
+@@ -77,6 +77,15 @@
+             android:layout_height="match_parent"
+             android:orientation="horizontal">
+ 
++           <com.android.systemui.statusbar.policy.Traffic
++                android:id="@+id/traffic"
++                android:textAppearance="@style/TextAppearance.StatusBar.Traffic"
++                android:layout_width="wrap_content"
++                android:layout_height="match_parent"
++                android:layout_marginRight="2dp"
++                android:gravity="left|center_vertical"
++                />
++
+            <LinearLayout android:id="@+id/statusIcons"
+                 android:layout_width="wrap_content"
+                 android:layout_height="match_parent"
+diff --git a/packages/SystemUI/res/values/styles.xml b/packages/SystemUI/res/values/styles.xml
+index 988b14c..1cc2de4 100644
+--- a/packages/SystemUI/res/values/styles.xml
++++ b/packages/SystemUI/res/values/styles.xml
+@@ -66,6 +66,13 @@
+         <item name="android:textColor">@android:color/holo_blue_light</item>
+     </style>
+ 
++    <style name="TextAppearance.StatusBar.Traffic" parent="@*android:style/TextAppearance.StatusBar.Icon">
++        <!-- Note: must be dp to fit in status bar -->
++        <item name="android:textSize">14dp</item>
++        <item name="android:textStyle">normal</item>
++        <item name="android:textColor">@android:color/holo_blue_light</item>
++    </style>
++
+     <style name="TextAppearance.StatusBar.Date" parent="@*android:style/TextAppearance.StatusBar.Icon">
+         <item name="android:textSize">16dp</item>
+         <item name="android:textStyle">normal</item>
