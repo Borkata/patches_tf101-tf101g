@@ -1,8 +1,8 @@
 diff --git a/config/common.mk b/config/common.mk
-index 5f1a6fc..67c67fa 100644
+index a1c4af3..5a5f82b 100644
 --- a/config/common.mk
 +++ b/config/common.mk
-@@ -254,9 +254,9 @@ ifndef CM_BUILDTYPE
+@@ -255,9 +255,9 @@ ifndef CM_BUILDTYPE
  endif
  
  # Filter out random types, so it'll reset to UNOFFICIAL
