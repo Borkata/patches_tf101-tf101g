@@ -25,6 +25,10 @@ echo ""
 echo "${grn}Allowed to provide the name CM_BUILDTYPE${txtrst}"
 cat allpatches/CM_BUILDTYPE.patch | patch -d $DSTDIR/vendor/cm -p1 -N -r -
 
+# initrc-ril
+echo "${grn}Applying init.rc patch. Allow connecting pppd${txtrst}"
+cat allpatches/initrc-ril.patch | patch -d $DSTDIR/system/core -p1 -N -r -
+
 # linaro toolchain
 echo ""
 echo "${grn}Copy linaro${txtrst}"
